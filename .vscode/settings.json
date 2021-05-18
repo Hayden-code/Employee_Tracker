@@ -4,5 +4,8 @@
         "statusBar.foreground": "#e7e7e7",
         "statusBarItem.hoverBackground": "#b34df3"
     },
-    "peacock.color": "#9e1df0"
+    "peacock.color": "#9e1df0",
+    "cSpell.ignoreWords": [
+        "rootroot"
+    ]
 }
