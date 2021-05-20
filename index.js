@@ -25,11 +25,16 @@ inquirer
         ]
     })
     .then((data) => {
-        if (data.firstAction === 'View all employees.') {
-            printTable();
-            
+        if (data.firstAction == 'View all employees.') {
+            printTable('all');
         }
-        else if (data.firstAction === 'View employees by department.') {
+        else if (data.firstAction == 'View employees by department.') {
+            printTable('department');
+        }
+        else if (data.firstAction == 'View all employees by manager.') {
+            printTable('manager')
+        }
+        else if (data.firstAction == 'Add employee.') {
             console.log('Function not added yet :(')
 
             inquirer
@@ -37,7 +42,7 @@ inquirer
                     //
                 })
         }
-        else if (data.firstAction === 'View all employees by manager.') {
+        else if (data.firstAction == 'Remove employee.') {
             console.log('Function not added yet :(')
 
             inquirer
@@ -45,7 +50,7 @@ inquirer
                     //
                 })
         }
-        else if (data.firstAction === 'Add employee.') {
+        else if (data.firstAction == 'Update employee role,') {
             console.log('Function not added yet :(')
 
             inquirer
@@ -53,23 +58,7 @@ inquirer
                     //
                 })
         }
-        else if (data.firstAction === 'Remove employee.') {
-            console.log('Function not added yet :(')
-
-            inquirer
-                .prompt({
-                    //
-                })
-        }
-        else if (data.firstAction === 'Update employee role,') {
-            console.log('Function not added yet :(')
-
-            inquirer
-                .prompt({
-                    //
-                })
-        }
-        else if (data.firstAction === 'Update employee manager') {
+        else if (data.firstAction == 'Update employee manager') {
             console.log('Function not added yet :(')
 
             inquirer
@@ -80,7 +69,16 @@ inquirer
 
     })
 
-function printTable() {
+function printTable(chosenTable) {
     // print table function
     console.log('Function not added yet :(')
+    if (chosenTable == 'all') {
+        console.log('Loading table of all employees...')
+    }
+    else if (chosenTable == 'department') {
+        console.log('Loading table of all employees by department...')
+    }
+    else if (chosenTable == 'manager') {
+        console.log('Loading table of all employees by manager...')
+    }
 }
