@@ -24,11 +24,6 @@
 
     Creating a Content Manager System (CMS) using node.
 
-# Screenshots
-
-_ENTER SCREENSHOTS HERE_
-![Screenshot of project](./Media/Screenshot.jpeg)
-
 # Installations
 
     mysql, inquirer, console.table
