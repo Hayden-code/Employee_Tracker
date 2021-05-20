@@ -39,17 +39,25 @@ INSERT INTO department (department_name)
 VALUES ("BACK-END");
 
 INSERT INTO employee_role (title, salary, department_id)
-VALUES ("SALES", "$100", "1");
+VALUES ("Manager", 100, 1);
 INSERT INTO employee_role (title, salary, department_id)
-VALUES ("MARKETING", "$200", "2");
+VALUES ("Sales rep", 200, 2);
+INSERT INTO employee_role (title, salary, department_id)
+VALUES ("Graphic designer", 400, 3);
 
 INSERT INTO employee (first_name, last_name, role_id, is_manager, manager_id)
-VALUES ("HAYDEN", "JONES", "1", "1", "1");
+VALUES ("HAYDEN", "JONES", 1, 1, 1);
 INSERT INTO employee (first_name, last_name, role_id, is_manager, manager_id)
-VALUES ("HARRISON", "MARSHALL", "2", "0", "1");
+VALUES ("HARRISON", "MARSHALL", 2, 0, 1);
 INSERT INTO employee (first_name, last_name, role_id, is_manager, manager_id)
-VALUES ("LUCINDA", "BROWN", "3", "1", "2");
+VALUES ("LUCINDA", "BROWN", 3, 1, 2);
 -- DELETE/EDIT THIS SECTION IF YOU WISH TO ADD YOUR OWN VALUES
 
+-- LINKING ALL 3 TABLES
+SELECT employee.employee_id, employee.first_name, employee.last_name, employee_role.title
+FROM employee
+INNER JOIN employee_role
+ON employee.role_id = employee_role.role_id;
 
-
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+FLUSH PRIVILEGES;
