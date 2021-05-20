@@ -67,13 +67,10 @@ function printTable(chosenTable) {
     depArr = [];
     connection.query(
       "SELECT department_name FROM department",
-      function (error, results) {
-        if (error) {
-          return error;
-        } else {
-          for (i = 0; i < results.length; i++) {
-            depArr.push(results[i].name);
-          }
+      (error, results) => {
+        if (error) throw error;
+        for (i = 0; i < results.length; i++) {
+          depArr.push(results[i].department_name);
         }
       }
     );
@@ -92,4 +89,41 @@ function printTable(chosenTable) {
     console.log("Loading table of all employees by manager...");
     runApp();
   }
+}
+
+function addEmployee() {
+  connection.query("SELECT * FROM employee_role", (err, res) => {
+    if (err) throw err;
+    let roleArray = [];
+    for (i = 0; i < res.length; i++) {
+      roleArray.push(res[i].title);
+    }
+    console.log(roleArray);
+    inquirer
+      .prompt([
+        {
+          name: "firstName",
+          type: "input",
+          message: "Enter employee first name.",
+        },
+        {
+          name: "lastName",
+          type: "input",
+          message: "Enter employee last name.",
+        },
+        {
+          name: "roleId",
+          type: "checkbox",
+          message: "Enter employee role",
+          choices: roleArray,
+        },
+      ])
+      .then(function (data) {
+        connection.query("INSERT INTO employee ?", {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          role_id: data.roleId,
+        });
+      });
+  });
 }
